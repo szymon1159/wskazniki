@@ -1,50 +1,58 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
-int** stworzTabliczkaMnozenia(const int iloscWierszy, const int iloscKolumn)
-{
-    int ** tablica=new int*[iloscWierszy];
-    // [ int*]
-    // [ int*]
-    // [ int*]
-    // [ int*]
-    for(int i=0;i<iloscWierszy;++i)
-    {
-        tablica[i]=new int[iloscKolumn];
-    }
-    // [ int*]->0[int][int]...[int][int]
-    // [ int*]->1[int][int]...[int][int]
-    // [ int*]->n-2[int][int]...[int][int]
-    // [ int*]->n-1[int][int]...[int][int]
-    for (int i=0;i<iloscWierszy;i++)
-    {
-        for(int j=0;j<iloscKolumn;j++)
-        {
-            tablica[i][j]={(i+1)*(j+1)};
-        }
-    }
-    return tablica;
-}
-void wyswietlanie(int** tabliczka, int rozmiar)
-{
-    for(int i=0;i<rozmiar;i++){
-        for(int j=0;j<rozmiar;j++){
-            cout<<tabliczka[i][j];
-            cout<<" ";
-        }
-        cout<<endl;
-    }
-}
+
 
 int main()
 {
-    int** wsk=stworzTabliczkaMnozenia(15,15);
-    wyswietlanie(wsk,15);
-    for(int i=0;i<15;++i) {
-        delete[] wsk[i];
+    string napis="KKKKKK asdasd Rownanie:3-2=4";
+    if(napis.find("Hej")!=string::npos )
+    {
+        cout<<"Dzien dobry";
+        cout<<endl;
     }
-    delete[] wsk;
-    wsk=nullptr;
+    if(napis.find("Pa")!=string::npos)
+    {
+        cout<<"Do widzenia";
+    }
+    // KKKKKK asdasd Rownanie:1+2=4
+    string porownanie="Rownanie:";
+    int indeks=napis.find(porownanie);
+    if (indeks != string::npos)
+    {
+        string row=napis.substr(indeks+porownanie.size(),5);
+        //1+2=7
+        cout<<row[0]<<row[1]<<row[2]<<row[3]<<row[4]<<endl;
+        if(row[1]=='+')
+        {
+            int poprawnyWynik=row[0]-48+row[2]-48;
+            if (poprawnyWynik==row[4]-48)
+            {
+                cout<<"Gratulacje!";
+            }
+            else
+            {
+                row[4] = poprawnyWynik + 48;
+                cout<<"Poprawny wynik to: "<<row;
+            }
 
+        }
+        if(row[1]=='-')
+        {
+            int poprawnyWynik=row[0]-48-(row[2]-48);
+            if (poprawnyWynik==row[4]-48)
+            {
+                cout<<"Gratulacje!";
+            }
+            else
+            {
+                row[4] = poprawnyWynik + 48;
+                cout<<"Poprawny wynik to: "<<row;
+            }
+
+        }
+
+    }
     return 0;
 }
