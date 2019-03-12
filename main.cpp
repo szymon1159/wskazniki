@@ -16,12 +16,14 @@ public:
     {
 
     }
+    Product()
+    {}
 };
 class Refrigator
 {
-public:
     int liczbaProduktow=0;
     Product products[10];
+public:
     void obnizTemperature()
     {
         for(int i=0;i<liczbaProduktow;i++)
@@ -44,6 +46,10 @@ public:
             cout << "W lodowce jest " << products[i].name << " o temperaturze " << products[i].temperatura<<endl;
         }
     }
+    void zjedz(string napis)
+    {
+        products=
+    }
 
 };
 
@@ -56,6 +62,13 @@ int main()
     Product s("szynka",15);
     Product p("piwo",15);
     lodowka.dodaj(m);
+    lodowka.dodaj(k);
+    lodowka.dodaj(j);
+    lodowka.dodaj(s);
+    lodowka.dodaj(p);
+    lodowka.wyswietl();
+    cout<<endl;
+    lodowka.obnizTemperature();
     lodowka.wyswietl();
 }
 
