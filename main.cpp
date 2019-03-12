@@ -46,9 +46,16 @@ public:
             cout << "W lodowce jest " << products[i].name << " o temperaturze " << products[i].temperatura<<endl;
         }
     }
-    void zjedz(string napis)
+    void usun(string nazwaProduktu)
     {
-        products=
+        for(int i=0;i<liczbaProduktow;i++)
+        {
+           if(nazwaProduktu==products[i].name){
+               products[i]=products[liczbaProduktow-1];
+               break;
+           }
+        }
+        liczbaProduktow--;
     }
 
 };
@@ -70,5 +77,8 @@ int main()
     cout<<endl;
     lodowka.obnizTemperature();
     lodowka.wyswietl();
+    lodowka.usun("jajka");
+    lodowka.wyswietl();
+
 }
 
