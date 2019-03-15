@@ -3,82 +3,49 @@
 #include <cmath>
 
 using namespace std;
-class Refrigator;
-class Product
-{
-    friend Refrigator;
-    string name;
-    int temperatura;
-public:
-    Product(string nazwa,int temp)
-    :name{nazwa}
-    ,temperatura{temp}
-    {
 
+class Matka
+{
+public:
+    Matka()
+    {
+       // cout<<"Cokolwiek"<<endl;
     }
-    Product()
-    {}
+   void zrobienie()
+    {
+        cout<<"Jakis cout"<<endl;
+    }
+
+    virtual ~Matka()
+    {
+        //cout<<"Zniszczenie po raz pierwszy"<<endl;
+    }
 };
-class Refrigator
+class Corka : public Matka
 {
-    int liczbaProduktow=0;
-    Product products[10];
 public:
-    void obnizTemperature()
+    Corka()
     {
-        for(int i=0;i<liczbaProduktow;i++)
-        {
-            products[i].temperatura--;
-        }
+        //cout<<"Jakis tekst"<<endl;
     }
-    void dodaj(Product p)
+    ~Corka()
     {
-        if (liczbaProduktow<10)
-        {
-            products[liczbaProduktow] = p;
-            liczbaProduktow++;
-        }
+       // cout<<"Zniszczenie po raz ostatni"<<endl;
     }
-    void wyswietl()
+    void zrobienie()
     {
-        for(int i=0;i<liczbaProduktow;i++)
-        {
-            cout << "W lodowce jest " << products[i].name << " o temperaturze " << products[i].temperatura<<endl;
-        }
+        cout<<"Nadpisanie"<<endl;
     }
-    void usun(string nazwaProduktu)
-    {
-        for(int i=0;i<liczbaProduktow;i++)
-        {
-           if(nazwaProduktu==products[i].name){
-               products[i]=products[liczbaProduktow-1];
-               break;
-           }
-        }
-        liczbaProduktow--;
-    }
-
 };
 
 int main()
 {
-    Refrigator lodowka;
-    Product m("mleko",10);
-    Product k("kakao",15);
-    Product j("jajka",10);
-    Product s("szynka",15);
-    Product p("piwo",15);
-    lodowka.dodaj(m);
-    lodowka.dodaj(k);
-    lodowka.dodaj(j);
-    lodowka.dodaj(s);
-    lodowka.dodaj(p);
-    lodowka.wyswietl();
-    cout<<endl;
-    lodowka.obnizTemperature();
-    lodowka.wyswietl();
-    lodowka.usun("jajka");
-    lodowka.wyswietl();
 
+    Matka* mama = new Matka;
+    Matka* druga = new Corka();
+    mama->zrobienie();
+    druga->zrobienie();
+    delete mama;
+    delete druga;
 }
 
