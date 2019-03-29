@@ -42,6 +42,16 @@ void print_nodes(Node* head)
     }
     cout<<"KONIEC LISTY"<<endl;
 }
+void remove(Node* head,int value)
+{
+    Node* obecna{head};
+    for(;obecna; obecna=obecna->next)
+    {
+        Node* nastepna=obecna->next;
+        if(nastepna->value==value);
+
+    }
+}
 
 
 int main()
