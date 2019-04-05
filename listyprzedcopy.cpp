@@ -5,58 +5,54 @@
 #include <set>
 #include <map>
 using namespace std;
-
-struct Album
+int main()
 {
-    string nazwaAlbumu;
-    string artysta;
-    int rokWydania;
-    bool operator<(const Album &other) const {
-        if (rokWydania < other.rokWydania) {
-            return true;
+    char tablica[3][3];
+    for(int i=0;i<3;i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+            tablica[i][j]=' ';
         }
-        if (rokWydania > other.rokWydania) {
-            return false;
-        }
-        if (nazwaAlbumu < other.nazwaAlbumu) {
-            return true;
-        }
-        if (nazwaAlbumu > other.nazwaAlbumu) {
-            return false;
-        }
-        return artysta < other.artysta;
     }
-};
+    int wiersz;
+    int kolumna;
+    for(int i=0;i<9;i++)
+    {
+        cout << "Graczu pierwszy, podaj wiersz, w ktorym chcesz umiecic znak: " << endl;
+        cin >> wiersz;
+        cout << "Podaj kolumne, w ktorej chcesz umiescic znak: " << endl;
+        cin >> kolumna;
+        tablica[wiersz - 1][kolumna - 1] = 'x';
+        for (int j = 0; j < 3; j++)
+        {
+            cout<<endl;
+            for (int k = 0; k < 3; k++)
+            {
+                cout << tablica[j][k];
+            }
+        }
 
-int main() {
-    set<Album> albumy;
-    Album pierwszy;
-    pierwszy.artysta = "Linkin Park";
-    pierwszy.nazwaAlbumu = "Meteora";
-    pierwszy.rokWydania = 2003;
-    albumy.insert(pierwszy);
-    Album drugi;
-    drugi.artysta = "Linkin Park";
-    drugi.nazwaAlbumu = "Hybrid Theory";
-    drugi.rokWydania = 2003;
-    albumy.insert(drugi);
-    Album trzeci;
-    trzeci.artysta = "Pink Floyd";
-    trzeci.nazwaAlbumu = "The Piper at the Gates of Dawn";
-    trzeci.rokWydania = 1967;
-    albumy.insert(trzeci);
-    Album czwarty;
-    czwarty.artysta = "Metallica";
-    czwarty.nazwaAlbumu = "Metallica";
-    czwarty.rokWydania = 1967;
-    albumy.insert(czwarty);
-    for (const Album &element : albumy) {
-        cout << element.artysta << endl;
-        cout << element.rokWydania << endl;
-        cout << element.nazwaAlbumu << endl;
+        cout << "Graczu drugi, podaj wiersz, w ktorym chcesz umiecic znak: " << endl;
+        cin >> wiersz;
+        cout << "Podaj kolumne, w ktorej chcesz umiescic znak: ";
+        cin >> kolumna;
+        tablica[wiersz - 1][kolumna - 1] = 'o';
+        for (int j = 0; j < 3; j++)
+        {
+            cout<<endl;
+            for (int k = 0; k < 3; k++)
+            {
+                cout << tablica[j][k];
+            }
+        }
+        i++;
     }
+
 
 }
+
+
 
 
 
